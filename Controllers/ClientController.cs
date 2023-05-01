@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using d_Videogame_Store.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace d_Videogame_Store.Controllers
@@ -10,39 +9,22 @@ namespace d_Videogame_Store.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class ClientController : ControllerBase
-    {
-        // Context to access the database
-        // private readonly VideogameStoreContext _context;
+    { 
+        private readonly IClientService _clientService;
 
-        // public ClientController(VideogameStoreContext context)
-        // {
-        //     _context = context;
-        // }
-        
-        // mock context data
-        private static List<Client> _context = new List<Client>()
+        public ClientController(IClientService clientService)
         {
-            new Client()
-            {
-                Id = 1,
-                Username = "johndoe",
-                Fullname = "John Doe",
-                Document = "123456789",
-                Birthdate = new DateTime(1990, 1, 1),
-                Email = "user.com",
-                Phone = "123456789",
-                Address = "123 Main St.",
-            },
-        };
+            _clientService = clientService;
+        }
 
         // GET api/client
         // Summary - Gets all clients
         // Param - None
         // Return - All clients
         [HttpGet]
-        public ActionResult<IEnumerable<Client>> Get()
+        public ActionResult<IEnumerable<Client>> GetAll()
         {
-            return Ok(_context.ToList());
+            return Ok(_clientService.GetAll());
         }
 
         // GET api/client/5
@@ -52,7 +34,7 @@ namespace d_Videogame_Store.Controllers
         [HttpGet("{id}")]
         public ActionResult<Client> Get(int id)
         {
-            var client = _context.Find(c => c.Id == id);
+            var client = _clientService.Get(id);
 
             if (client == null)
             {
@@ -69,16 +51,13 @@ namespace d_Videogame_Store.Controllers
         [HttpPost]
         public ActionResult<Client> Post([FromBody] Client client)
         {
-            _context.Add(client);
-            //_context.SaveChanges();
-
-            return CreatedAtAction(nameof(Get), new { id = client.Id }, client);
+            return Ok(_clientService.Post(client));
         }
 
         // PUT api/client/5
         // Summary - Updates a client
         // Param - id, a client
-        // Return - None
+        // Return - The updated client
         [HttpPut("{id}")]
         public ActionResult<Client> Put(int id, [FromBody] Client client)
         {
@@ -87,10 +66,7 @@ namespace d_Videogame_Store.Controllers
                 return BadRequest();
             }
 
-            //_context.Entry(client).State = EntityState.Modified;
-            //_context.SaveChanges();
-
-            return NoContent();
+            return Ok(_clientService.Put(id, client));
         }
 
         // DELETE api/client/5
@@ -100,15 +76,12 @@ namespace d_Videogame_Store.Controllers
         [HttpDelete("{id}")]
         public ActionResult<Client> Delete(int id)
         {
-            var client = _context.Find(c => c.Id == id);
+            var client = _clientService.Delete(id);
 
             if (client == null)
             {
                 return NotFound();
             }
-
-            _context.Remove(client);
-            //_context.SaveChanges();
 
             return Ok(client);
         }

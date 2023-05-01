@@ -1,3 +1,6 @@
+global using d_Videogame_Store.Models;
+global using d_Videogame_Store.Services.ClientService;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

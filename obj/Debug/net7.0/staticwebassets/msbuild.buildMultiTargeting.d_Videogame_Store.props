@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\d_Videogame_Store.props" />
+</Project>
