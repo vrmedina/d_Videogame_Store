@@ -23,24 +23,24 @@ namespace d_Videogame_Store.Services.ClientService
             },
         };
 
-        public ActionResult<IEnumerable<Client>> GetAll()
+        public async Task<ActionResult<IEnumerable<Client>>> GetAll()
         {
             return _context.ToList();
         }
 
-        public ActionResult<Client> Get(int id)
+        public async Task<ActionResult<Client>> Get(int id)
         {
             var client = _context.Find(c => c.Id == id);
 
-            if (client == null)
+            if (client is not null)
             {
-                return null;
+                return client;
             }
-
-            return client;
+            
+            throw new Exception("Client not found");
         }
 
-        public ActionResult<Client> Post(Client client)
+        public async Task<ActionResult<Client>> Post(Client client)
         {
             _context.Add(client);
             //_context.SaveChanges();
@@ -48,7 +48,7 @@ namespace d_Videogame_Store.Services.ClientService
             return client;
         }
 
-        public ActionResult<Client> Put(int id, Client client)
+        public async Task<ActionResult<Client>> Put(int id, Client client)
         {
             if (id != client.Id)
             {
@@ -61,19 +61,18 @@ namespace d_Videogame_Store.Services.ClientService
             return client;
         }
 
-        public ActionResult<Client> Delete(int id)
+        public async Task<ActionResult<Client>> Delete(int id)
         {
             var client = _context.Find(c => c.Id == id);
 
-            if (client == null)
+            if (client is not null)
             {
-                return null;
+                _context.Remove(client);
+                //_context.SaveChanges();
+                return client;
             }
 
-            _context.Remove(client);
-            //_context.SaveChanges();
-
-            return client;
+            throw new Exception("Client not found");
         }
     }
 }

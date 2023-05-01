@@ -21,20 +21,20 @@ namespace d_Videogame_Store.Controllers
         // Summary - Gets all clients
         // Param - None
         // Return - All clients
-        [HttpGet]
-        public ActionResult<IEnumerable<Client>> GetAll()
+        [HttpGet("GetAll")]
+        public async Task<ActionResult<IEnumerable<Client>>> GetAll()
         {
-            return Ok(_clientService.GetAll());
+            return Ok(await _clientService.GetAll());
         }
 
         // GET api/client/5
         // Summary - Gets a client by id
         // Param - id
         // Return - A client
-        [HttpGet("{id}")]
-        public ActionResult<Client> Get(int id)
+        [HttpGet("Get/{id}")]
+        public async Task<ActionResult<Client>> Get(int id)
         {
-            var client = _clientService.Get(id);
+            var client = await _clientService.Get(id);
 
             if (client == null)
             {
@@ -48,35 +48,35 @@ namespace d_Videogame_Store.Controllers
         // Summary - Creates a client
         // Param - A client
         // Return - The created client
-        [HttpPost]
-        public ActionResult<Client> Post([FromBody] Client client)
+        [HttpPost("Post")]
+        public async Task<ActionResult<Client>> Post([FromBody] Client client)
         {
-            return Ok(_clientService.Post(client));
+            return Ok(await _clientService.Post(client));
         }
 
         // PUT api/client/5
         // Summary - Updates a client
         // Param - id, a client
         // Return - The updated client
-        [HttpPut("{id}")]
-        public ActionResult<Client> Put(int id, [FromBody] Client client)
+        [HttpPut("Put/{id}")]
+        public async Task<ActionResult<Client>> Put(int id, [FromBody] Client client)
         {
             if (id != client.Id)
             {
                 return BadRequest();
             }
 
-            return Ok(_clientService.Put(id, client));
+            return Ok(await _clientService.Put(id, client));
         }
 
         // DELETE api/client/5
         // Summary - Deletes a client
         // Param - id
         // Return - The deleted client
-        [HttpDelete("{id}")]
-        public ActionResult<Client> Delete(int id)
+        [HttpDelete("Delete/{id}")]
+        public async Task<ActionResult<Client>> Delete(int id)
         {
-            var client = _clientService.Delete(id);
+            var client = await _clientService.Delete(id);
 
             if (client == null)
             {
