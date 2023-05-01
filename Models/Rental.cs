@@ -12,6 +12,6 @@ namespace d_Videogame_Store.Models
         public int ClientId { get; set; }
         public DateTime RentalDate { get; set; }
         public DateTime DueDate { get; set; }
-        public decimal RentalPrice { get; set; }
+        public RentalPrice RentalPrice { get; set; }
     }
 }
