@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>d_Videogame_Store</name>
+    </assembly>
+    <members>
+        <member name="M:d_Videogame_Store.Controllers.ClientController.GetAll">
+            <summary>
+            Gets all clients
+            </summary>
+            <param></param>
+            <returns>A list of clients</returns>
+            <remarks>
+            Sample request:
+            
+                GET /api/client/GetAll
+                
+            </remarks>
+        </member>
+        <member name="M:d_Videogame_Store.Controllers.ClientController.Get(System.Int32)">
+             <summary>
+             Gets a client by id
+             </summary>
+             <param name="id"></param>
+             <returns>A client</returns>
+             <remarks>
+             Sample request:
+            
+                 GET /api/client/Get/1
+            
+             </remarks>
+        </member>
+        <member name="M:d_Videogame_Store.Controllers.ClientController.Post(d_Videogame_Store.Models.Client)">
+             <summary>
+             Creates a client
+             </summary>
+             <param name="client"></param>
+             <returns>A newly created client</returns>
+             <remarks>
+             Sample request:
+            
+                 POST /api/client/Post
+                 {
+                    "username": "johndoe",
+                    "fullname": "John Doe",
+                    "document": "123456789",
+                    "birthdate": "1990-01-01T00:00:00",
+                    "email": "johndoe123@mail.com",
+                    "phone": "1234567890",
+                    "address": "Calle 5 #5-5"
+                 }
+            
+             </remarks>
+        </member>
+        <member name="M:d_Videogame_Store.Controllers.ClientController.Put(System.Int32,d_Videogame_Store.Models.Client)">
+             <summary>
+             Updates a client
+             </summary>
+             <param name="id"></param>
+             <param name="client"></param>
+             <returns>An updated client</returns>
+             <remarks>
+             Sample request:
+            
+                 PUT /api/client/Put/1
+                 {
+                    "username": "johndew",
+                    "fullname": "John Dew",
+                    "document": "123441518",
+                    "birthdate": "1990-01-01T00:00:00",
+                    "email": "johndew123@mailcom",
+                    "phone": "9876541223",
+                    "address": "Calle 9 #9-9"
+                 }
+            
+             </remarks>
+        </member>
+        <member name="M:d_Videogame_Store.Controllers.ClientController.Delete(System.Int32)">
+             <summary>
+             Deletes a client
+             </summary>
+             <param name="id"></param>
+             <returns>A deleted client</returns>
+             <remarks>
+             Sample request:
+            
+                 DELETE /api/client/Delete/1
+            
+             </remarks>
+        </member>
+    </members>
+</doc>

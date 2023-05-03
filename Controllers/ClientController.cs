@@ -17,22 +17,36 @@ namespace d_Videogame_Store.Controllers
             _clientService = clientService;
         }
 
-        // GET api/client
-        // Summary - Gets all clients
-        // Param - None
-        // Return - All clients
+        /// <summary>
+        /// Gets all clients
+        /// </summary>
+        /// <param></param>
+        /// <returns>A list of clients</returns>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET /api/client/GetAll
+        ///     
+        /// </remarks>
         [HttpGet("GetAll")]
-        public async Task<ActionResult<IEnumerable<Client>>> GetAll()
+        public async Task<ActionResult<ServiceResponse<IEnumerable<Client>>>> GetAll()
         {
             return Ok(await _clientService.GetAll());
         }
 
-        // GET api/client/5
-        // Summary - Gets a client by id
-        // Param - id
-        // Return - A client
+        /// <summary>
+        /// Gets a client by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A client</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     GET /api/client/Get/1
+        ///
+        /// </remarks>
         [HttpGet("Get/{id}")]
-        public async Task<ActionResult<Client>> Get(int id)
+        public async Task<ActionResult<ServiceResponse<Client>>> Get(int id)
         {
             var client = await _clientService.Get(id);
 
@@ -44,22 +58,55 @@ namespace d_Videogame_Store.Controllers
             return Ok(client);
         }
 
-        // POST api/client
-        // Summary - Creates a client
-        // Param - A client
-        // Return - The created client
+        /// <summary>
+        /// Creates a client
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns>A newly created client</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /api/client/Post
+        ///     {
+        ///        "username": "johndoe",
+        ///        "fullname": "John Doe",
+        ///        "document": "123456789",
+        ///        "birthdate": "1990-01-01T00:00:00",
+        ///        "email": "johndoe123@mail.com",
+        ///        "phone": "1234567890",
+        ///        "address": "Calle 5 #5-5"
+        ///     }
+        ///
+        /// </remarks>
         [HttpPost("Post")]
-        public async Task<ActionResult<Client>> Post([FromBody] Client client)
+        public async Task<ActionResult<ServiceResponse<Client>>> Post([FromBody] Client client)
         {
             return Ok(await _clientService.Post(client));
         }
 
-        // PUT api/client/5
-        // Summary - Updates a client
-        // Param - id, a client
-        // Return - The updated client
+        /// <summary>
+        /// Updates a client
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="client"></param>
+        /// <returns>An updated client</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PUT /api/client/Put/1
+        ///     {
+        ///        "username": "johndew",
+        ///        "fullname": "John Dew",
+        ///        "document": "123441518",
+        ///        "birthdate": "1990-01-01T00:00:00",
+        ///        "email": "johndew123@mailcom",
+        ///        "phone": "9876541223",
+        ///        "address": "Calle 9 #9-9"
+        ///     }
+        ///
+        /// </remarks>
         [HttpPut("Put/{id}")]
-        public async Task<ActionResult<Client>> Put(int id, [FromBody] Client client)
+        public async Task<ActionResult<ServiceResponse<Client>>> Put(int id, [FromBody] Client client)
         {
             if (id != client.Id)
             {
@@ -69,12 +116,19 @@ namespace d_Videogame_Store.Controllers
             return Ok(await _clientService.Put(id, client));
         }
 
-        // DELETE api/client/5
-        // Summary - Deletes a client
-        // Param - id
-        // Return - The deleted client
+        /// <summary>
+        /// Deletes a client
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A deleted client</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     DELETE /api/client/Delete/1
+        ///
+        /// </remarks>
         [HttpDelete("Delete/{id}")]
-        public async Task<ActionResult<Client>> Delete(int id)
+        public async Task<ActionResult<ServiceResponse<Client>>> Delete(int id)
         {
             var client = await _clientService.Delete(id);
 

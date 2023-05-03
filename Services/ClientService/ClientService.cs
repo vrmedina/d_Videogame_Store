@@ -23,53 +23,88 @@ namespace d_Videogame_Store.Services.ClientService
             },
         };
 
-        public async Task<ActionResult<IEnumerable<Client>>> GetAll()
+        public async Task<ServiceResponse<ActionResult<IEnumerable<Client>>>> GetAll()
         {
-            return _context.ToList();
+            var serviceResponse = new ServiceResponse<ActionResult<IEnumerable<Client>>>();
+
+            serviceResponse.Data = _context;
+            serviceResponse.Success = true;
+            serviceResponse.Message = "Clients found";
+
+            return serviceResponse;
         }
 
-        public async Task<ActionResult<Client>> Get(int id)
+        public async Task<ServiceResponse<ActionResult<Client>>> Get(int id)
         {
+            var serviceResponse = new ServiceResponse<ActionResult<Client>>();
+
             var client = _context.Find(c => c.Id == id);
 
             if (client is not null)
             {
-                return client;
+                serviceResponse.Data = client;
+                serviceResponse.Success = true;
+                serviceResponse.Message = "Client found";
+
+                return serviceResponse;
             }
             
             throw new Exception("Client not found");
         }
 
-        public async Task<ActionResult<Client>> Post(Client client)
+        public async Task<ServiceResponse<ActionResult<Client>>> Post(Client client)
         {
+            var serviceResponse = new ServiceResponse<ActionResult<Client>>();
+
             _context.Add(client);
             //_context.SaveChanges();
 
-            return client;
+            serviceResponse.Data = client;
+            serviceResponse.Success = true;
+            serviceResponse.Message = "Client created successfully";
+
+            return serviceResponse;
         }
 
-        public async Task<ActionResult<Client>> Put(int id, Client client)
+        public async Task<ServiceResponse<ActionResult<Client>>> Put(int id, Client client)
         {
+            var serviceResponse = new ServiceResponse<ActionResult<Client>>();
+            
             if (id != client.Id)
             {
-                return null;
+                serviceResponse.Data = null;
+                serviceResponse.Success = false;
+                serviceResponse.Message = "Client not found";
+
+                return serviceResponse;
             }
 
             //_context.Entry(client).State = EntityState.Modified;
             //_context.SaveChanges();
 
-            return client;
+            serviceResponse.Data = client;
+            serviceResponse.Success = true;
+            serviceResponse.Message = "Client updated successfully";
+
+            return serviceResponse;
         }
 
-        public async Task<ActionResult<Client>> Delete(int id)
+        public async Task<ServiceResponse<ActionResult<Client>>> Delete(int id)
         {
+            var serviceResponse = new ServiceResponse<ActionResult<Client>>();
+
             var client = _context.Find(c => c.Id == id);
 
             if (client is not null)
             {
                 _context.Remove(client);
                 //_context.SaveChanges();
-                return client;
+
+                serviceResponse.Data = client;
+                serviceResponse.Success = true;
+                serviceResponse.Message = "Client deleted successfully";
+
+                return serviceResponse;
             }
 
             throw new Exception("Client not found");
