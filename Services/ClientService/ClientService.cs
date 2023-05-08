@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace d_Videogame_Store.Services.ClientService
@@ -22,8 +23,14 @@ namespace d_Videogame_Store.Services.ClientService
                 Address = "123 Main St.",
             },
         };
+        private readonly IMapper _mapper;
 
-        public async Task<ServiceResponse<ActionResult<IEnumerable<Client>>>> GetAll()
+        public ClientService(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
+        public async Task<ServiceResponse<ActionResult<IEnumerable<GetClientResponseDTO>>>> GetAll()
         {
             var serviceResponse = new ServiceResponse<ActionResult<IEnumerable<Client>>>();
 
@@ -34,7 +41,7 @@ namespace d_Videogame_Store.Services.ClientService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<ActionResult<Client>>> Get(int id)
+        public async Task<ServiceResponse<ActionResult<GetClientResponseDTO>>> Get(int id)
         {
             var serviceResponse = new ServiceResponse<ActionResult<Client>>();
 
@@ -52,7 +59,7 @@ namespace d_Videogame_Store.Services.ClientService
             throw new Exception("Client not found");
         }
 
-        public async Task<ServiceResponse<ActionResult<Client>>> Post(Client client)
+        public async Task<ServiceResponse<ActionResult<GetClientResponseDTO>>> Post(CreateClientRequestDTO client)
         {
             var serviceResponse = new ServiceResponse<ActionResult<Client>>();
 
@@ -66,7 +73,7 @@ namespace d_Videogame_Store.Services.ClientService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<ActionResult<Client>>> Put(int id, Client client)
+        public async Task<ServiceResponse<ActionResult<GetClientResponseDTO>>> Put(int id, UpdateClientRequestDTO client)
         {
             var serviceResponse = new ServiceResponse<ActionResult<Client>>();
             
@@ -89,7 +96,7 @@ namespace d_Videogame_Store.Services.ClientService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<ActionResult<Client>>> Delete(int id)
+        public async Task<ServiceResponse<ActionResult<GetClientResponseDTO>>> Delete(int id)
         {
             var serviceResponse = new ServiceResponse<ActionResult<Client>>();
 

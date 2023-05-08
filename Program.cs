@@ -1,5 +1,9 @@
+global using AutoMapper;
 global using d_Videogame_Store.Models;
+// Client
+global using d_Videogame_Store.DTOs.Client;
 global using d_Videogame_Store.Services.ClientService;
+
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 
@@ -32,6 +36,9 @@ builder.Services.AddSwaggerGen(options =>
         var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
         options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
     });
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
 builder.Services.AddScoped<IClientService, ClientService>();
 
 

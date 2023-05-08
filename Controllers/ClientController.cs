@@ -29,7 +29,7 @@ namespace d_Videogame_Store.Controllers
         ///     
         /// </remarks>
         [HttpGet("GetAll")]
-        public async Task<ActionResult<ServiceResponse<IEnumerable<Client>>>> GetAll()
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetClientResponseDTO>>>> GetAll()
         {
             return Ok(await _clientService.GetAll());
         }
@@ -46,7 +46,7 @@ namespace d_Videogame_Store.Controllers
         ///
         /// </remarks>
         [HttpGet("Get/{id}")]
-        public async Task<ActionResult<ServiceResponse<Client>>> Get(int id)
+        public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Get(int id)
         {
             var client = await _clientService.Get(id);
 
@@ -79,7 +79,7 @@ namespace d_Videogame_Store.Controllers
         ///
         /// </remarks>
         [HttpPost("Post")]
-        public async Task<ActionResult<ServiceResponse<Client>>> Post([FromBody] Client client)
+        public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Post([FromBody] CreateClientRequestDTO client)
         {
             return Ok(await _clientService.Post(client));
         }
@@ -106,13 +106,8 @@ namespace d_Videogame_Store.Controllers
         ///
         /// </remarks>
         [HttpPut("Put/{id}")]
-        public async Task<ActionResult<ServiceResponse<Client>>> Put(int id, [FromBody] Client client)
+        public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Put(int id, [FromBody] UpdateClientRequestDTO client)
         {
-            if (id != client.Id)
-            {
-                return BadRequest();
-            }
-
             return Ok(await _clientService.Put(id, client));
         }
 
@@ -128,7 +123,7 @@ namespace d_Videogame_Store.Controllers
         ///
         /// </remarks>
         [HttpDelete("Delete/{id}")]
-        public async Task<ActionResult<ServiceResponse<Client>>> Delete(int id)
+        public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Delete(int id)
         {
             var client = await _clientService.Delete(id);
 

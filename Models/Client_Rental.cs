@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace d_Videogame_Store.Models
 {
-    public class RentalPrice
+    public class Client_Rental
     {
         public int Id { get; set; }
-        public int VideogameId { get; set; } // VideogameId is the foreign key to the Videogame table
-        public decimal PricePerDay { get; set; }
+        public int ClientId { get; set; }
+        public int RentalId { get; set; }
     }
 }
