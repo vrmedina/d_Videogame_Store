@@ -33,3 +33,5 @@ C:\Users\Victor Medina\Desktop\Sophos\Reto\d_Videogame_Store\obj\Debug\net7.0\d_
 C:\Users\Victor Medina\Desktop\Sophos\Reto\d_Videogame_Store\obj\Debug\net7.0\ref\d_Videogame_Store.dll
 C:\Users\Victor Medina\Desktop\Sophos\Reto\d_Videogame_Store\bin\Debug\net7.0\d_Videogame_Store.xml
 C:\Users\Victor Medina\Desktop\Sophos\Reto\d_Videogame_Store\obj\Debug\net7.0\d_Videogame_Store.xml
+C:\Users\Victor Medina\Desktop\Sophos\Reto\d_Videogame_Store\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\Victor Medina\Desktop\Sophos\Reto\d_Videogame_Store\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

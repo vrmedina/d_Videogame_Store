@@ -29,9 +29,16 @@ namespace d_Videogame_Store.Controllers
         ///     
         /// </remarks>
         [HttpGet("GetAll")]
-        public async Task<ActionResult<ServiceResponse<IEnumerable<GetClientResponseDTO>>>> GetAll()
+        public async Task<ActionResult<ServiceResponse<List<GetClientResponseDTO>>>> GetAll()
         {
-            return Ok(await _clientService.GetAll());
+            var response = await _clientService.GetAll();
+
+            if (response.Data == null)
+            {
+                return NotFound(response);
+            }
+
+            return Ok(response);
         }
 
         /// <summary>
@@ -48,14 +55,14 @@ namespace d_Videogame_Store.Controllers
         [HttpGet("Get/{id}")]
         public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Get(int id)
         {
-            var client = await _clientService.Get(id);
+            var response = await _clientService.Get(id);
 
-            if (client == null)
+            if (response.Data == null)
             {
-                return NotFound();
+                return NotFound(response);
             }
 
-            return Ok(client);
+            return Ok(response);
         }
 
         /// <summary>
@@ -81,20 +88,27 @@ namespace d_Videogame_Store.Controllers
         [HttpPost("Post")]
         public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Post([FromBody] CreateClientRequestDTO client)
         {
-            return Ok(await _clientService.Post(client));
+            var response = await _clientService.Post(client);
+
+            if (response.Data == null)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
         }
 
         /// <summary>
         /// Updates a client
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="client"></param>
         /// <returns>An updated client</returns>
         /// <remarks>
         /// Sample request:
         ///
-        ///     PUT /api/client/Put/1
+        ///     PUT /api/client/Put
         ///     {
+        ///        "id": 1,
         ///        "username": "johndew",
         ///        "fullname": "John Dew",
         ///        "document": "123441518",
@@ -105,10 +119,17 @@ namespace d_Videogame_Store.Controllers
         ///     }
         ///
         /// </remarks>
-        [HttpPut("Put/{id}")]
-        public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Put(int id, [FromBody] UpdateClientRequestDTO client)
+        [HttpPut("Put")]
+        public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Put( [FromBody] UpdateClientRequestDTO client)
         {
-            return Ok(await _clientService.Put(id, client));
+            var response = await _clientService.Put(client);
+
+            if (response.Data == null)
+            {
+                return NotFound(response);
+            }
+
+            return Ok(response);
         }
 
         /// <summary>
@@ -125,14 +146,14 @@ namespace d_Videogame_Store.Controllers
         [HttpDelete("Delete/{id}")]
         public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Delete(int id)
         {
-            var client = await _clientService.Delete(id);
+            var response = await _clientService.Delete(id);
 
-            if (client == null)
+            if (response.Data == null)
             {
-                return NotFound();
+                return NotFound(response);
             }
 
-            return Ok(client);
+            return Ok(response);
         }
     }
 }

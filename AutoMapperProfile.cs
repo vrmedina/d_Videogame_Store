@@ -5,11 +5,16 @@ using System.Threading.Tasks;
 
 namespace d_Videogame_Store
 {
-    public class AutoMapperProfile
+    public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
-            // CreateMap<Client, GetClientDTO>();
+            // Maps for Client
+            CreateMap<Client, GetClientResponseDTO>();
+            CreateMap<CreateClientRequestDTO, Client>();
+            CreateMap<CreateClientRequestDTO, GetClientResponseDTO>();
+            CreateMap<UpdateClientRequestDTO, Client>();
+
         }
     }
 }

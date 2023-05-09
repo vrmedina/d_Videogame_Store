@@ -7,6 +7,7 @@ namespace d_Videogame_Store.DTOs.Client
 {
     public class UpdateClientRequestDTO
     {
+        public int Id { get; set; }
         public string Username { get; set; }
         public string Fullname { get; set; }
         public string Document { get; set; }
