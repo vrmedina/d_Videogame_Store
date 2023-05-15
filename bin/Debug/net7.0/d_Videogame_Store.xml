@@ -88,5 +88,17 @@
             
              </remarks>
         </member>
+        <member name="T:d_Videogame_Store.Migrations.FirstMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:d_Videogame_Store.Migrations.FirstMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:d_Videogame_Store.Migrations.FirstMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:d_Videogame_Store.Migrations.FirstMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
