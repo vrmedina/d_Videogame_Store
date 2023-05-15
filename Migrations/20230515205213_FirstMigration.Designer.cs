@@ -12,7 +12,7 @@ using d_Videogame_Store.Data;
 namespace d_Videogame_Store.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230515053256_FirstMigration")]
+    [Migration("20230515205213_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -56,13 +56,64 @@ namespace d_Videogame_Store.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
                     b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("d_Videogame_Store.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("d_Videogame_Store.Models.Client", b =>
+                {
+                    b.HasOne("d_Videogame_Store.Models.User", "User")
+                        .WithOne("Client")
+                        .HasForeignKey("d_Videogame_Store.Models.Client", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("d_Videogame_Store.Models.User", b =>
+                {
+                    b.Navigation("Client");
                 });
 #pragma warning restore 612, 618
         }

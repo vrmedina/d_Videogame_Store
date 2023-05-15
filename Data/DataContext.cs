@@ -13,6 +13,7 @@ namespace d_Videogame_Store.Data
             
         }
 
+        public DbSet<User> Users => Set<User>();
         public DbSet<Client> Clients => Set<Client>();
     }
 }
