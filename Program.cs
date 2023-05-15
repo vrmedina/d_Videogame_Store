@@ -1,4 +1,6 @@
 global using AutoMapper;
+global using Microsoft.EntityFrameworkCore;
+global using d_Videogame_Store.Data;
 global using d_Videogame_Store.Models;
 // Client
 global using d_Videogame_Store.DTOs.Client;
@@ -11,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => 
