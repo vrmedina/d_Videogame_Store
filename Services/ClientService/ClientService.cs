@@ -9,46 +9,49 @@ namespace d_Videogame_Store.Services.ClientService
 {
     public class ClientService : IClientService
     {
-        private static List<Client> _context = new List<Client>()
-        {
-            new Client()
-            {
-                Id = 1,
-                Username = "johndoe",
-                Fullname = "John Doe",
-                Document = "123456789",
-                Birthdate = new DateTime(1990, 1, 1),
-                Email = "user.com",
-                Phone = "123456789",
-                Address = "123 Main St.",
-            },
-            new Client()
-            {
-                Id = 2,
-                Username = "janedoe",
-                Fullname = "Jane Doe",
-                Document = "987654321",
-                Birthdate = new DateTime(1998, 1, 1),
-                Email = "usuario.com",
-                Phone = "987654321",
-                Address = "321 Mani St.",
-            }
-        };
+        // private static List<Client> _context = new List<Client>()
+        // {
+        //     new Client()
+        //     {
+        //         Id = 1,
+        //         Username = "johndoe",
+        //         Fullname = "John Doe",
+        //         Document = "123456789",
+        //         Birthdate = new DateTime(1990, 1, 1),
+        //         Email = "user.com",
+        //         Phone = "123456789",
+        //         Address = "123 Main St.",
+        //     },
+        //     new Client()
+        //     {
+        //         Id = 2,
+        //         Username = "janedoe",
+        //         Fullname = "Jane Doe",
+        //         Document = "987654321",
+        //         Birthdate = new DateTime(1998, 1, 1),
+        //         Email = "usuario.com",
+        //         Phone = "987654321",
+        //         Address = "321 Mani St.",
+        //     }
+        // };
 
         private readonly IMapper _mapper;
+        private readonly DataContext _context;
 
-        public ClientService(IMapper mapper)
+        public ClientService(IMapper mapper, DataContext context)
         {
+            _context = context;
             _mapper = mapper;
         }
 
         public async Task<ServiceResponse<List<GetClientResponseDTO>>> GetAll()
         {
             var serviceResponse = new ServiceResponse<List<GetClientResponseDTO>>();
+            var dbClients = await _context.Clients.ToListAsync();
 
             try
             {
-                serviceResponse.Data = _context.Select(c => _mapper.Map<GetClientResponseDTO>(c)).ToList();
+                serviceResponse.Data = dbClients.Select(c => _mapper.Map<GetClientResponseDTO>(c)).ToList();
                 serviceResponse.Success = true;
                 serviceResponse.Message = "Clients found";
             }
@@ -65,14 +68,13 @@ namespace d_Videogame_Store.Services.ClientService
         public async Task<ServiceResponse<GetClientResponseDTO>> Get(int id)
         {
             var serviceResponse = new ServiceResponse<GetClientResponseDTO>();
+            var dbClient = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id);
 
             try
             {
-                var client = _context.Find(c => c.Id == id);
-    
-                if (client is not null)
+                if (dbClient is not null)
                 {
-                    serviceResponse.Data = _mapper.Map<GetClientResponseDTO>(client);
+                    serviceResponse.Data = _mapper.Map<GetClientResponseDTO>(dbClient);
                     serviceResponse.Success = true;
                     serviceResponse.Message = "Client found";
                 } else
@@ -95,14 +97,16 @@ namespace d_Videogame_Store.Services.ClientService
         public async Task<ServiceResponse<GetClientResponseDTO>> Post(CreateClientRequestDTO client)
         {
             var serviceResponse = new ServiceResponse<GetClientResponseDTO>();
+            var dbClients = await _context.Clients.ToListAsync();
             
             try
             {
                 var newClient = _mapper.Map<Client>(client);
-                newClient.Id = _context.Max(c => c.Id) + 1;
+                newClient.Id = dbClients.Max(c => c.Id) + 1;
     
-                _context.Add(newClient);
-                //_context.SaveChanges();
+                dbClients.Add(newClient);
+                
+                _context.SaveChanges();
     
                 serviceResponse.Data = _mapper.Map<GetClientResponseDTO>(newClient);
                 serviceResponse.Success = true;
@@ -121,10 +125,11 @@ namespace d_Videogame_Store.Services.ClientService
         public async Task<ServiceResponse<GetClientResponseDTO>> Put(UpdateClientRequestDTO client)
         {
             var serviceResponse = new ServiceResponse<GetClientResponseDTO>();
+            var dbClients = await _context.Clients.ToListAsync();
             
             try
             {
-                var updateClient = _context.FirstOrDefault(c => c.Id == client.Id);
+                var updateClient = dbClients.FirstOrDefault(c => c.Id == client.Id);
     
                 if (updateClient is not null)
                 {
@@ -136,7 +141,7 @@ namespace d_Videogame_Store.Services.ClientService
                     updateClient.Phone = client.Phone;
                     updateClient.Address = client.Address;
     
-                    //_context.SaveChanges();
+                    _context.SaveChanges();
     
                     serviceResponse.Data = _mapper.Map<GetClientResponseDTO>(updateClient);
                     serviceResponse.Success = true;
@@ -161,15 +166,17 @@ namespace d_Videogame_Store.Services.ClientService
         public async Task<ServiceResponse<GetClientResponseDTO>> Delete(int id)
         {
             var serviceResponse = new ServiceResponse<GetClientResponseDTO>();
+            var dbClients = await _context.Clients.ToListAsync();
 
             try
             {
-                var client = _context.Find(c => c.Id == id);
+                var client = dbClients.Find(c => c.Id == id);
 
                 if (client is not null)
                 {
                     _context.Remove(client);
-                    //_context.SaveChanges();
+                    
+                    _context.SaveChanges();
     
                     serviceResponse.Data = _mapper.Map<GetClientResponseDTO>(client);
                     serviceResponse.Success = true;
