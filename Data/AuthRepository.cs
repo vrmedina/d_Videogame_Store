@@ -1,17 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.IdentityModel.Tokens;
 
 namespace d_Videogame_Store.Data
 {
     public class AuthRepository : IAuthRepository
     {
         private readonly DataContext _context;
-        public AuthRepository(DataContext context)
+        private readonly IConfiguration _configuration;
+        public AuthRepository(DataContext context, IConfiguration configuration)
         {
-            _context = context;
-            
+            _configuration = configuration;
+            _context = context; 
         }
 
         public async Task<ServiceResponse<string>> Login(string username, string password)
@@ -34,7 +39,7 @@ namespace d_Videogame_Store.Data
             }
             else
             {
-                response.Data = user.Id.ToString();
+                response.Data = CreateToken(user);
             }
 
             return response;
@@ -89,6 +94,7 @@ namespace d_Videogame_Store.Data
             }
         }
 
+        // This method is used to verify the password hash and salt
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
             // Create a new instance of the HMACSHA512 class
@@ -100,6 +106,52 @@ namespace d_Videogame_Store.Data
                 // Compare the computed hash with the password hash that is stored in the database
                 return computedHash.SequenceEqual(passwordHash);
             }
+        }
+
+        // This method is used to create the JWT token
+        private string CreateToken(User user)
+        {
+            // Create the claims that will be used to create the token
+            var claims = new List<Claim>
+            {
+                // Add the user id to the claims
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                // Add the username to the claims
+                new Claim(ClaimTypes.Name, user.Username)
+            };
+
+            var appSettingsToken = _configuration.GetSection("AppSettings:Token").Value;
+
+            if(appSettingsToken is null)
+            {
+                throw new Exception("Token not found");
+            }
+
+            // Create the key that will be used to sign the token
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appSettingsToken));
+
+            // Create the credentials that will be used to sign the token
+            SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            // Create the token descriptor
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                // Add the claims to the token descriptor
+                Subject = new ClaimsIdentity(claims),
+                // Set the expiration date of the token
+                Expires = DateTime.Now.AddDays(1),
+                // Add the credentials to the token descriptor
+                SigningCredentials = creds
+            };
+
+            // Create the token handler
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+
+            // Create the token
+            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+
+            // Return the token
+            return tokenHandler.WriteToken(token);
         }
     }
 }
