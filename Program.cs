@@ -42,6 +42,7 @@ builder.Services.AddSwaggerGen(options =>
     
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IClientService, ClientService>();
 
 

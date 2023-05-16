@@ -9,6 +9,6 @@ namespace d_Videogame_Store.Models
     {
         public int Id { get; set; }
         public int VideogameId { get; set; } // VideogameId is the foreign key to the Videogame table
-        public decimal PricePerDay { get; set; }
+        public decimal PricePerDay { get; set; } = 0;
     }
 }
