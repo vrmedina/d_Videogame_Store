@@ -22,7 +22,7 @@ namespace d_Videogame_Store.Controllers
         public async Task<ActionResult<ServiceResponse<string>>> Login(UserLoginRequestDTO request)
         {
             var response = await _authRepository.Login(
-                request.Username, 
+                request.Username,
                 request.Password
             );
 
@@ -38,7 +38,7 @@ namespace d_Videogame_Store.Controllers
         public async Task<ActionResult<ServiceResponse<int>>> Register(UserRegisterRequestDTO request)
         {
             var response = await _authRepository.Register(
-                new User { Username = request.Username }, 
+                new User { Username = request.Username },
                 request.Password
             );
 

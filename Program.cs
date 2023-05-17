@@ -2,6 +2,7 @@ global using AutoMapper;
 global using Microsoft.EntityFrameworkCore;
 global using d_Videogame_Store.Data;
 global using d_Videogame_Store.Models;
+
 // Client
 global using d_Videogame_Store.DTOs.Client;
 global using d_Videogame_Store.Services.ClientService;
@@ -70,10 +71,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IClientService, ClientService>();
 
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

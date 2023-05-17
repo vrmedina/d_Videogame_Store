@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ namespace d_Videogame_Store.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class ClientController : ControllerBase
-    { 
+    {
         private readonly IClientService _clientService;
 
         public ClientController(IClientService clientService)
@@ -122,7 +123,7 @@ namespace d_Videogame_Store.Controllers
         ///
         /// </remarks>
         [HttpPut("Put")]
-        public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Put( [FromBody] UpdateClientRequestDTO client)
+        public async Task<ActionResult<ServiceResponse<GetClientResponseDTO>>> Put([FromBody] UpdateClientRequestDTO client)
         {
             var response = await _clientService.Put(client);
 

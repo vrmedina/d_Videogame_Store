@@ -53,7 +53,7 @@ namespace d_Videogame_Store.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.Property<string>("Username")
@@ -62,8 +62,7 @@ namespace d_Videogame_Store.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Clients");
                 });
@@ -84,9 +83,8 @@ namespace d_Videogame_Store.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -100,17 +98,15 @@ namespace d_Videogame_Store.Migrations
             modelBuilder.Entity("d_Videogame_Store.Models.Client", b =>
                 {
                     b.HasOne("d_Videogame_Store.Models.User", "User")
-                        .WithOne("Client")
-                        .HasForeignKey("d_Videogame_Store.Models.Client", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Clients")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("d_Videogame_Store.Models.User", b =>
                 {
-                    b.Navigation("Client");
+                    b.Navigation("Clients");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,7 +16,7 @@ namespace d_Videogame_Store.Data
         public AuthRepository(DataContext context, IConfiguration configuration)
         {
             _configuration = configuration;
-            _context = context; 
+            _context = context;
         }
 
         public async Task<ServiceResponse<string>> Login(string username, string password)
@@ -27,12 +27,12 @@ namespace d_Videogame_Store.Data
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Username.ToLower().Equals(username.ToLower()));
 
             // Check if the user exists
-            if(user == null)
+            if (user == null)
             {
                 response.Success = false;
                 response.Message = "User not found";
             }
-            else if(!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            else if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             {
                 response.Success = false;
                 response.Message = "Incorrect password";
@@ -48,8 +48,8 @@ namespace d_Videogame_Store.Data
         public async Task<ServiceResponse<int>> Register(User user, string password)
         {
             var response = new ServiceResponse<int>();
-            
-            if(await UserExists(user.Username))
+
+            if (await UserExists(user.Username))
             {
                 response.Success = false;
                 response.Message = "User already exists.";
@@ -87,7 +87,7 @@ namespace d_Videogame_Store.Data
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             // Here we are using the HMACSHA512 class to create the password hash and salt
-            using(var hmac = new System.Security.Cryptography.HMACSHA512())
+            using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
                 passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
@@ -98,11 +98,11 @@ namespace d_Videogame_Store.Data
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
             // Create a new instance of the HMACSHA512 class
-            using(var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
             {
                 // Compute the hash of the password that is passed in
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                
+
                 // Compare the computed hash with the password hash that is stored in the database
                 return computedHash.SequenceEqual(passwordHash);
             }
@@ -117,12 +117,14 @@ namespace d_Videogame_Store.Data
                 // Add the user id to the claims
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 // Add the username to the claims
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                // Add the role to the claims
+                new Claim(ClaimTypes.Role, user.Role.ToString())
             };
 
             var appSettingsToken = _configuration.GetSection("AppSettings:Token").Value;
 
-            if(appSettingsToken is null)
+            if (appSettingsToken is null)
             {
                 throw new Exception("Token not found");
             }
