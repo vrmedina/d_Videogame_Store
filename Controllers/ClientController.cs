@@ -28,7 +28,7 @@ namespace d_Videogame_Store.Controllers
         /// <remarks>
         /// Sample request:
         /// 
-        ///     GET /api/client/GetAll
+        ///     GET /api/Client/GetAll
         ///     
         /// </remarks>
         [HttpGet("GetAll")]
@@ -52,7 +52,7 @@ namespace d_Videogame_Store.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET /api/client/Get/1
+        ///     GET /api/Client/Get/1
         ///
         /// </remarks>
         [HttpGet("Get/{id}")]
@@ -76,7 +76,7 @@ namespace d_Videogame_Store.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     POST /api/client/Post
+        ///     POST /api/Client/Post
         ///     {
         ///        "username": "johndoe",
         ///        "fullname": "John Doe",
@@ -109,7 +109,7 @@ namespace d_Videogame_Store.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     PUT /api/client/Put
+        ///     PUT /api/Client/Put
         ///     {
         ///        "id": 1,
         ///        "username": "johndew",
@@ -143,7 +143,7 @@ namespace d_Videogame_Store.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     DELETE /api/client/Delete/1
+        ///     DELETE /api/Client/Delete/1
         ///
         /// </remarks>
         [HttpDelete("Delete/{id}")]

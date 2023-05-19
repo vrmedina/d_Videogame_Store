@@ -5,15 +5,15 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace d_Videogame_Store.Services.ClientService
+namespace d_Videogame_Store.Services.VideogameService
 {
-    public class ClientService : IClientService
+    public class VideogameService : IVideogameService
     {
         private readonly IMapper _mapper;
         private readonly DataContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ClientService(IMapper mapper, DataContext context, IHttpContextAccessor httpContextAccessor)
+        public VideogameService(IMapper mapper, DataContext context, IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
             _context = context;
@@ -26,21 +26,21 @@ namespace d_Videogame_Store.Services.ClientService
         private string GetUserRole() => _httpContextAccessor.HttpContext!.User
             .FindFirstValue(ClaimTypes.Role)!;
 
-        public async Task<ServiceResponse<List<GetClientResponseDTO>>> GetAll()
+        public async Task<ServiceResponse<List<GetVideogameResponseDTO>>> GetAll()
         {
-            var serviceResponse = new ServiceResponse<List<GetClientResponseDTO>>();
+            var serviceResponse = new ServiceResponse<List<GetVideogameResponseDTO>>();
 
-            List<Client> dbClients;
+            List<Videogame> dbVideogames;
 
             if (GetUserRole() == "User")
             {
-                // If the user is not an admin, only return the clients that belong to the user
-                dbClients = await _context.Clients.Where(c => c.User!.Id == GetUserId()).ToListAsync();
+                // If the user is not an admin, only return the Videogames that belong to the user
+                dbVideogames = await _context.Videogames.Where(c => c.User!.Id == GetUserId()).ToListAsync();
             }
             else if (GetUserRole() == "Admin")
             {
-                // If the user is an admin, return all clients
-                dbClients = await _context.Clients.ToListAsync();
+                // If the user is an admin, return all Videogames
+                dbVideogames = await _context.Videogames.ToListAsync();
             }
             else
             {
@@ -53,9 +53,9 @@ namespace d_Videogame_Store.Services.ClientService
 
             try
             {
-                serviceResponse.Data = dbClients.Select(c => _mapper.Map<GetClientResponseDTO>(c)).ToList();
+                serviceResponse.Data = dbVideogames.Select(c => _mapper.Map<GetVideogameResponseDTO>(c)).ToList();
                 serviceResponse.Success = true;
-                serviceResponse.Message = "Clients found";
+                serviceResponse.Message = "Videogames found";
             }
             catch (Exception ex)
             {
@@ -67,21 +67,21 @@ namespace d_Videogame_Store.Services.ClientService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<GetClientResponseDTO>> Get(int id)
+        public async Task<ServiceResponse<GetVideogameResponseDTO>> Get(int id)
         {
-            var serviceResponse = new ServiceResponse<GetClientResponseDTO>();
+            var serviceResponse = new ServiceResponse<GetVideogameResponseDTO>();
 
-            Client dbClient;
+            Videogame dbVideogame;
 
             if (GetUserRole() == "User")
             {
-                // If the user is not an admin, only return the client if it belongs to the user
-                dbClient = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && c.User!.Id == GetUserId());
+                // If the user is not an admin, only return the Videogame if it belongs to the user
+                dbVideogame = await _context.Videogames.FirstOrDefaultAsync(c => c.Id == id && c.User!.Id == GetUserId());
             }
             else if (GetUserRole() == "Admin")
             {
-                // If the user is an admin, return the client
-                dbClient = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id);
+                // If the user is an admin, return the Videogame
+                dbVideogame = await _context.Videogames.FirstOrDefaultAsync(c => c.Id == id);
             }
             else
             {
@@ -94,17 +94,17 @@ namespace d_Videogame_Store.Services.ClientService
 
             try
             {
-                if (dbClient is not null)
+                if (dbVideogame is not null)
                 {
-                    serviceResponse.Data = _mapper.Map<GetClientResponseDTO>(dbClient);
+                    serviceResponse.Data = _mapper.Map<GetVideogameResponseDTO>(dbVideogame);
                     serviceResponse.Success = true;
-                    serviceResponse.Message = "Client found";
+                    serviceResponse.Message = "Videogame found";
                 }
                 else
                 {
                     serviceResponse.Data = null;
                     serviceResponse.Success = false;
-                    serviceResponse.Message = "Client not found";
+                    serviceResponse.Message = "Videogame not found";
                 }
             }
             catch (Exception ex)
@@ -117,23 +117,23 @@ namespace d_Videogame_Store.Services.ClientService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<GetClientResponseDTO>> Post(CreateClientRequestDTO client)
+        public async Task<ServiceResponse<GetVideogameResponseDTO>> Post(CreateVideogameRequestDTO Videogame)
         {
-            var serviceResponse = new ServiceResponse<GetClientResponseDTO>();
+            var serviceResponse = new ServiceResponse<GetVideogameResponseDTO>();
 
             try
             {
-                var newClient = _mapper.Map<Client>(client);
+                var newVideogame = _mapper.Map<Videogame>(Videogame);
 
-                newClient.User = await _context.Users.FirstOrDefaultAsync(u => u.Id == GetUserId());
+                newVideogame.User = await _context.Users.FirstOrDefaultAsync(u => u.Id == GetUserId());
 
-                _context.Clients.Add(newClient);
+                _context.Videogames.Add(newVideogame);
 
                 await _context.SaveChangesAsync();
 
-                serviceResponse.Data = _mapper.Map<GetClientResponseDTO>(newClient);
+                serviceResponse.Data = _mapper.Map<GetVideogameResponseDTO>(newVideogame);
                 serviceResponse.Success = true;
-                serviceResponse.Message = "Client created successfully";
+                serviceResponse.Message = "Videogame created successfully";
             }
             catch (Exception ex)
             {
@@ -145,21 +145,21 @@ namespace d_Videogame_Store.Services.ClientService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<GetClientResponseDTO>> Put(UpdateClientRequestDTO client)
+        public async Task<ServiceResponse<GetVideogameResponseDTO>> Put(UpdateVideogameRequestDTO Videogame)
         {
-            var serviceResponse = new ServiceResponse<GetClientResponseDTO>();
+            var serviceResponse = new ServiceResponse<GetVideogameResponseDTO>();
 
-            Client updateClient;
+            Videogame updateVideogame;
 
             if (GetUserRole() == "User")
             {
-                // If the user is not an admin, only update the client if it belongs to the user
-                updateClient = await _context.Clients.FirstOrDefaultAsync(c => c.Id == client.Id && c.User!.Id == GetUserId());
+                // If the user is not an admin, only update the Videogame if it belongs to the user
+                updateVideogame = await _context.Videogames.FirstOrDefaultAsync(c => c.Id == Videogame.Id && c.User!.Id == GetUserId());
             }
             else if (GetUserRole() == "Admin")
             {
-                // If the user is an admin, update the client
-                updateClient = await _context.Clients.FirstOrDefaultAsync(c => c.Id == client.Id);
+                // If the user is an admin, update the Videogame
+                updateVideogame = await _context.Videogames.FirstOrDefaultAsync(c => c.Id == Videogame.Id);
             }
             else
             {
@@ -172,27 +172,26 @@ namespace d_Videogame_Store.Services.ClientService
 
             try
             {
-                if (updateClient is not null)
+                if (updateVideogame is not null)
                 {
-                    updateClient.Username = client.Username;
-                    updateClient.Fullname = client.Fullname;
-                    updateClient.Document = client.Document;
-                    updateClient.Birthdate = client.Birthdate;
-                    updateClient.Email = client.Email;
-                    updateClient.Phone = client.Phone;
-                    updateClient.Address = client.Address;
+                    updateVideogame.Name = Videogame.Name;
+                    updateVideogame.Year = Videogame.Year;
+                    updateVideogame.Protagonists = Videogame.Protagonists;
+                    updateVideogame.Director = Videogame.Director;
+                    updateVideogame.Producer = Videogame.Producer;
+                    updateVideogame.Platform = Videogame.Platform;
 
                     await _context.SaveChangesAsync();
 
-                    serviceResponse.Data = _mapper.Map<GetClientResponseDTO>(updateClient);
+                    serviceResponse.Data = _mapper.Map<GetVideogameResponseDTO>(updateVideogame);
                     serviceResponse.Success = true;
-                    serviceResponse.Message = "Client updated successfully";
+                    serviceResponse.Message = "Videogame updated successfully";
                 }
                 else
                 {
                     serviceResponse.Data = null;
                     serviceResponse.Success = false;
-                    serviceResponse.Message = "Client not found";
+                    serviceResponse.Message = "Videogame not found";
                 }
             }
             catch (Exception ex)
@@ -205,21 +204,21 @@ namespace d_Videogame_Store.Services.ClientService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<GetClientResponseDTO>> Delete(int id)
+        public async Task<ServiceResponse<GetVideogameResponseDTO>> Delete(int id)
         {
-            var serviceResponse = new ServiceResponse<GetClientResponseDTO>();
+            var serviceResponse = new ServiceResponse<GetVideogameResponseDTO>();
 
-            Client deleteClient;
+            Videogame deleteVideogame;
 
             if (GetUserRole() == "User")
             {
-                // If the user is not an admin, only delete the client if it belongs to the user
-                deleteClient = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id && c.User!.Id == GetUserId());
+                // If the user is not an admin, only delete the Videogame if it belongs to the user
+                deleteVideogame = await _context.Videogames.FirstOrDefaultAsync(c => c.Id == id && c.User!.Id == GetUserId());
             }
             else if (GetUserRole() == "Admin")
             {
-                // If the user is an admin, delete the client
-                deleteClient = await _context.Clients.FirstOrDefaultAsync(c => c.Id == id);
+                // If the user is an admin, delete the Videogame
+                deleteVideogame = await _context.Videogames.FirstOrDefaultAsync(c => c.Id == id);
             }
             else
             {
@@ -232,21 +231,21 @@ namespace d_Videogame_Store.Services.ClientService
 
             try
             {
-                if (deleteClient is not null)
+                if (deleteVideogame is not null)
                 {
-                    _context.Clients.Remove(deleteClient);
+                    _context.Videogames.Remove(deleteVideogame);
 
                     await _context.SaveChangesAsync();
 
-                    serviceResponse.Data = _mapper.Map<GetClientResponseDTO>(deleteClient);
+                    serviceResponse.Data = _mapper.Map<GetVideogameResponseDTO>(deleteVideogame);
                     serviceResponse.Success = true;
-                    serviceResponse.Message = "Client deleted successfully";
+                    serviceResponse.Message = "Videogame deleted successfully";
                 }
                 else
                 {
                     serviceResponse.Data = null;
                     serviceResponse.Success = false;
-                    serviceResponse.Message = "Client not found";
+                    serviceResponse.Message = "Videogame not found";
                 }
             }
             catch (Exception ex)

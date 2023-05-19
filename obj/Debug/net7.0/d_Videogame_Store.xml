@@ -13,7 +13,7 @@
             <remarks>
             Sample request:
             
-                GET /api/client/GetAll
+                GET /api/Client/GetAll
                 
             </remarks>
         </member>
@@ -26,7 +26,7 @@
              <remarks>
              Sample request:
             
-                 GET /api/client/Get/1
+                 GET /api/Client/Get/1
             
              </remarks>
         </member>
@@ -39,7 +39,7 @@
              <remarks>
              Sample request:
             
-                 POST /api/client/Post
+                 POST /api/Client/Post
                  {
                     "username": "johndoe",
                     "fullname": "John Doe",
@@ -61,7 +61,7 @@
              <remarks>
              Sample request:
             
-                 PUT /api/client/Put
+                 PUT /api/Client/Put
                  {
                     "id": 1,
                     "username": "johndew",
@@ -84,7 +84,78 @@
              <remarks>
              Sample request:
             
-                 DELETE /api/client/Delete/1
+                 DELETE /api/Client/Delete/1
+            
+             </remarks>
+        </member>
+        <member name="M:d_Videogame_Store.Controllers.VideogameController.GetAll">
+            <summary>
+            Gets all videogames
+            </summary>
+            <param></param>
+            <returns>A list of videogames</returns>
+            <remarks>
+            Sample request:
+            
+                GET /api/Videogame/GetAll
+                
+            </remarks>
+        </member>
+        <member name="M:d_Videogame_Store.Controllers.VideogameController.Get(System.Int32)">
+             <summary>
+             Gets a videogame by id
+             </summary>
+             <param name="id"></param>
+             <returns>A videogame</returns>
+             <remarks>
+             Sample request:
+            
+                 GET /api/Videogame/Get/1
+            
+             </remarks>
+        </member>
+        <member name="M:d_Videogame_Store.Controllers.VideogameController.Post(d_Videogame_Store.DTOs.Videogame.CreateVideogameRequestDTO)">
+             <summary>
+             Creates a videogame
+             </summary>
+             <param name="videogame"></param>
+             <returns>A newly created videogame</returns>
+             <remarks>
+             Sample request:
+            
+                 POST /api/Videogame/Post
+                 {
+                    "example": "example",
+                 }
+            
+             </remarks>
+        </member>
+        <member name="M:d_Videogame_Store.Controllers.VideogameController.Put(d_Videogame_Store.DTOs.Videogame.UpdateVideogameRequestDTO)">
+             <summary>
+             Updates a videogame
+             </summary>
+             <param name="videogame"></param>
+             <returns>An updated videogame</returns>
+             <remarks>
+             Sample request:
+            
+                 PUT /api/Videogame/Put
+                 {
+                    "example": "example",
+                 }
+            
+             </remarks>
+        </member>
+        <member name="M:d_Videogame_Store.Controllers.VideogameController.Delete(System.Int32)">
+             <summary>
+             Deletes a videogame
+             </summary>
+             <param name="id"></param>
+             <returns>A deleted videogame</returns>
+             <remarks>
+             Sample request:
+            
+                 DELETE /api/Videogame/Delete/1
             
              </remarks>
         </member>

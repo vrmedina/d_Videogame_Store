@@ -13,5 +13,6 @@ namespace d_Videogame_Store.Models
         public byte[] PasswordSalt { get; set; } = new byte[0];
         public Role Role { get; set; } = Role.User;
         public List<Client>? Clients { get; set; }
+        public List<Videogame>? Videogames { get; set; }
     }
 }

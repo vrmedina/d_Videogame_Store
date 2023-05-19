@@ -14,7 +14,11 @@ namespace d_Videogame_Store
             CreateMap<CreateClientRequestDTO, Client>();
             CreateMap<CreateClientRequestDTO, GetClientResponseDTO>();
             CreateMap<UpdateClientRequestDTO, Client>();
-
+            // Maps for Videogame
+            CreateMap<Videogame, GetVideogameResponseDTO>();
+            CreateMap<CreateVideogameRequestDTO, Videogame>();
+            CreateMap<CreateVideogameRequestDTO, GetVideogameResponseDTO>();
+            CreateMap<UpdateVideogameRequestDTO, Videogame>();
         }
     }
 }

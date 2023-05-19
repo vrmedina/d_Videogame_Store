@@ -7,6 +7,10 @@ global using d_Videogame_Store.Models;
 global using d_Videogame_Store.DTOs.Client;
 global using d_Videogame_Store.Services.ClientService;
 
+//Videogame
+global using d_Videogame_Store.DTOs.Videogame;
+global using d_Videogame_Store.Services.VideogameService;
+
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -17,7 +21,6 @@ using Swashbuckle.AspNetCore.Filters;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -70,6 +73,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddScoped<IVideogameService, VideogameService>();
 
 builder.Services.AddHttpContextAccessor();
 

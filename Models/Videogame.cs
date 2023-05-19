@@ -14,5 +14,6 @@ namespace d_Videogame_Store.Models
         public string Director { get; set; } = string.Empty;
         public string Producer { get; set; } = string.Empty;
         public string Platform { get; set; } = string.Empty;
+        public User? User { get; set; }
     }
 }

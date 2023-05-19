@@ -8,19 +8,19 @@ namespace d_Videogame_Store.Services.ClientService
 {
     public interface IClientService
     {
-        // GET api/client
+        // GET api/Client
         Task<ServiceResponse<List<GetClientResponseDTO>>> GetAll();
 
-        // GET api/client/5
+        // GET api/Client/5
         Task<ServiceResponse<GetClientResponseDTO>> Get(int id);
 
-        // POST api/client
+        // POST api/Client
         Task<ServiceResponse<GetClientResponseDTO>> Post(CreateClientRequestDTO client);
 
-        // PUT api/client/
+        // PUT api/Client/
         Task<ServiceResponse<GetClientResponseDTO>> Put(UpdateClientRequestDTO client);
 
-        // DELETE api/client/5
+        // DELETE api/Client/5
         Task<ServiceResponse<GetClientResponseDTO>> Delete(int id);
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace d_Videogame_Store.Data
 {
     public class DataContext : DbContext
@@ -12,5 +11,6 @@ namespace d_Videogame_Store.Data
 
         public DbSet<User> Users => Set<User>();
         public DbSet<Client> Clients => Set<Client>();
+        public DbSet<Videogame> Videogames => Set<Videogame>();
     }
 }
