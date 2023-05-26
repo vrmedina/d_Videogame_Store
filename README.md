@@ -205,15 +205,15 @@ Project Link: [https://github.com/vrmedina/d_Videogame_Store](https://github.com
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/vrmedina/d_Videogame_Store.svg?style=for-the-badge
 [contributors-url]: https://github.com/vrmedina/d_Videogame_Store/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/vrmedina/d_Videogame_Store.svg?style=for-the-badge
 [forks-url]: https://github.com/vrmedina/d_Videogame_Store/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/vrmedina/d_Videogame_Store.svg?style=for-the-badge
 [stars-url]: https://github.com/vrmedina/d_Videogame_Store/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/vrmedina/d_Videogame_Store.svg?style=for-the-badge
 [issues-url]: https://github.com/vrmedina/d_Videogame_Store/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/vrmedina/d_Videogame_Store.svg?style=for-the-badge
 [license-url]: https://github.com/vrmedina/d_Videogame_Store/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/victor-medina-meza
