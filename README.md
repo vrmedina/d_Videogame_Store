@@ -112,21 +112,33 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+_For this project to work properly you will need to have installed Visual Studio Code, SQL Server 2022 Express, .NET 7 SDK, Git._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Install .NET 7 SDK for your O.S.
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   https://dotnet.microsoft.com/en-us/download/dotnet/7.0
    ```
-3. Install NPM packages
+2. Install Git for your O.S.
    ```sh
-   npm install
+   https://git-scm.com/downloads
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Install SQL Server 2022 Express with default settings
+   ```sh
+   https://www.microsoft.com/en-us/sql-server/sql-server-downloads
    ```
+4. Open an empty folder in VS Code
+5. Open a new terminal
+6. Clone the repo
+   ```sh
+   git clone https://github.com/vrmedina/d_Videogame_Store.git
+   ```
+7. Run the project, a browser window with the API will appear
+   ```sh
+   dotnet watch run
+   ```
+8. 
+9. 
+10. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
