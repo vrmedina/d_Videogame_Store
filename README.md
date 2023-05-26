@@ -1,3 +1,5 @@
+<a name="readme-top"></a>
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -101,14 +103,6 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-_For this project to work properly you will need to have installed Visual Studio Code, SQL Server 2022 Express, .NET 7 SDK, Git._
 
 1. Install .NET 7 SDK for your O.S.
    ```sh
@@ -122,11 +116,28 @@ _For this project to work properly you will need to have installed Visual Studio
    ```sh
    https://www.microsoft.com/en-us/sql-server/sql-server-downloads
    ```
-4. Open an empty folder in VS Code
-5. Open a new terminal
-6. Clone the repo
+
+### Installation
+
+_For this project to work properly you will need to have installed Visual Studio Code, SQL Server 2022 Express, .NET 7 SDK, Git._
+
+1. Open an empty folder in VS Code
+2. Open a new terminal
+3. Clone the repo
    ```sh
    git clone https://github.com/vrmedina/d_Videogame_Store.git
+   ```
+4. Install dotnet-ef extension from terminal
+   ```sh
+   dotnet tool install --global dotnet-ef
+   ```
+5. Add migration with a random name like so
+   ```sh
+   dotnet ef migrations add Migracion
+   ```
+6. Create the database with entity framework
+   ```sh
+   dotnet ef database update
    ```
 7. Run the project, a browser window with the API will appear
    ```sh
