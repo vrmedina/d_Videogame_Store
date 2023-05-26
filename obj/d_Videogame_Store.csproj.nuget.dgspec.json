@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Victor Medina\\Desktop\\Sophos\\Reto\\d_Videogame_Store\\d_Videogame_Store.csproj": {}
+    "C:\\dev\\sophos\\reto\\d_Videogame_Store\\d_Videogame_Store.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Victor Medina\\Desktop\\Sophos\\Reto\\d_Videogame_Store\\d_Videogame_Store.csproj": {
+    "C:\\dev\\sophos\\reto\\d_Videogame_Store\\d_Videogame_Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Victor Medina\\Desktop\\Sophos\\Reto\\d_Videogame_Store\\d_Videogame_Store.csproj",
+        "projectUniqueName": "C:\\dev\\sophos\\reto\\d_Videogame_Store\\d_Videogame_Store.csproj",
         "projectName": "d_Videogame_Store",
-        "projectPath": "C:\\Users\\Victor Medina\\Desktop\\Sophos\\Reto\\d_Videogame_Store\\d_Videogame_Store.csproj",
-        "packagesPath": "C:\\Users\\Victor Medina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Victor Medina\\Desktop\\Sophos\\Reto\\d_Videogame_Store\\obj\\",
+        "projectPath": "C:\\dev\\sophos\\reto\\d_Videogame_Store\\d_Videogame_Store.csproj",
+        "packagesPath": "C:\\Users\\User C360\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\sophos\\reto\\d_Videogame_Store\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Victor Medina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User C360\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

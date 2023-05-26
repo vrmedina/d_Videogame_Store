@@ -125,7 +125,15 @@
             
                  POST /api/Videogame/Post
                  {
-                    "example": "example",
+                     "name": "The Last of Us",
+                     "year": 1990,
+                     "protagonists": [
+                         "Joel",
+                         "Ellie"
+                     ],
+                     "director": "Neil Druckmann",
+                     "producer": "Bruce Straley",
+                     "platform": "PlayStation 3",
                  }
             
              </remarks>
@@ -141,7 +149,16 @@
             
                  PUT /api/Videogame/Put
                  {
-                    "example": "example",
+                     "id": 1,
+                     "name": "The Last of Us",
+                     "year": 1990,
+                     "protagonists": [
+                         "Joel",
+                         "Ellie"
+                     ],
+                     "director": "Neil Druckmann",
+                     "producer": "Bruce Straley",
+                     "platform": "PlayStation 3",
                  }
             
              </remarks>
