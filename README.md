@@ -1,6 +1,4 @@
-# d_Videogame_Store
-A Videogame Store project for the subject Uninorte-Sophos
-
+[![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
@@ -13,7 +11,7 @@ A Videogame Store project for the subject Uninorte-Sophos
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">.NET 7 Videogame Store API</h3>
 
   <p align="center">
     An awesome Videogame Store management API build with .NET 7!
@@ -202,9 +200,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Victor Medina - [@vrmedina98](https://twitter.com/vrmedina98) - vrmm1998@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/vrmedina/d_Videogame_Store](https://github.com/vrmedina/d_Videogame_Store)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
