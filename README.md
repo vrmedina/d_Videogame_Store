@@ -86,9 +86,10 @@ Use the `BLANK_README.md` to get started.
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
+* [![.NET][Dotnet7]][Dotnet7-url]
+* [![Swagger][Swagger]][Swagger-url]
+* [![MicrosoftSQLServer][MicrosoftSQLServer]][MicrosoftSQLServer-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -226,3 +227,9 @@ Project Link: [https://github.com/vrmedina/d_Videogame_Store](https://github.com
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/victor-medina-meza
 [product-screenshot]: images/screenshot.png
+[Dotnet7]: https://img.shields.io/badge/-.NET%207.0-blueviolet?style=for-the-badge&logo=.net&logoColor=white
+[Dotnet7-url]: https://dotnet.microsoft.com/en-us/download/dotnet/7.0
+[MicrosoftSQLServer]: https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white
+[MicrosoftSQLServer-url]: https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+[Swagger]: https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white
+[Swagger-url]: https://swagger.io/
