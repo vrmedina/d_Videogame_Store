@@ -176,16 +176,16 @@
             
              </remarks>
         </member>
-        <member name="T:d_Videogame_Store.Migrations.FirstMigration">
+        <member name="T:d_Videogame_Store.Migrations.Migrate">
             <inheritdoc />
         </member>
-        <member name="M:d_Videogame_Store.Migrations.FirstMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:d_Videogame_Store.Migrations.Migrate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:d_Videogame_Store.Migrations.FirstMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:d_Videogame_Store.Migrations.Migrate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:d_Videogame_Store.Migrations.FirstMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:d_Videogame_Store.Migrations.Migrate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

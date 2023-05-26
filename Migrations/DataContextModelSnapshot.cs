@@ -95,6 +95,47 @@ namespace d_Videogame_Store.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("d_Videogame_Store.Models.Videogame", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Director")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Platform")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Producer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Protagonists")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Videogames");
+                });
+
             modelBuilder.Entity("d_Videogame_Store.Models.Client", b =>
                 {
                     b.HasOne("d_Videogame_Store.Models.User", "User")
@@ -104,9 +145,20 @@ namespace d_Videogame_Store.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("d_Videogame_Store.Models.Videogame", b =>
+                {
+                    b.HasOne("d_Videogame_Store.Models.User", "User")
+                        .WithMany("Videogames")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("d_Videogame_Store.Models.User", b =>
                 {
                     b.Navigation("Clients");
+
+                    b.Navigation("Videogames");
                 });
 #pragma warning restore 612, 618
         }
