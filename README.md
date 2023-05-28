@@ -49,6 +49,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#database-population">Database Population</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -56,7 +57,6 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -81,7 +81,6 @@ Key Features:
 Get started with the Videogame Rental Store API today and elevate your rental business to new heights of efficiency and customer satisfaction.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -167,7 +166,6 @@ _In order to have some data you can test the API with, you'll need to run a few 
 4. Execute them in order, 01...02...03... <br>
 ![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/eb56d73d-d1a1-47d9-9f97-755b47f29339)
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -193,7 +191,24 @@ To get started with the usage of the project, follow the steps outlined below:
 * Finally clic "Execute" <br>
 ![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/5c892847-6d95-4d6f-9113-d30a63c666ce)
 * Congrats, your user has been created! Now you can log in to the API.
+4. Now to be able to use the API, let's log in <br>
+* Under Auth, clic in Login <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/43e7786d-aac8-4ef9-b302-7f8b5decc723)
+* You can use your credentials or instead use an administrator account: <br>
+  - username: victor, password: victor (admin)
+  - username: string, password: string (admin)
+* Now press "Execute" <br>
+* Scroll down a bit and copy the generated token like this, without the quotation marks: <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/dc517a3e-ad11-463c-91e4-9d8965b70302)
+* All right, that's your login token, lets use it, scroll up and find this button, clic it: <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/32c750c8-e207-408a-9a02-937e156f61c8)
+* To log you in, you need to follow the instructions, firs write the word "bearer" and then paste your token: <br>
+  - example: bearer eyJhbGciOiJIUzUxMiIsInR5cC...(your token)
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/cc664dc1-6e68-4be7-ae59-caab91025da2)
+* Now press "Authorize", and then clic in "Close" to close the pop-up window
+* Nice!, if you used the correct token, you should be able to use the endpoints!
 
+HAVE FUN!
 
 _For more examples, please refer to the [Documentation](https://swagger.io/)_
 
@@ -206,8 +221,6 @@ _For more examples, please refer to the [Documentation](https://swagger.io/)_
 
 - [x] Add Changelog
 - [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
 - [ ] Multi-language Support
     - [ ] Chinese
     - [ ] Spanish
