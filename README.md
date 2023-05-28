@@ -125,6 +125,10 @@ Before getting started with the Videogame Rental Store API, ensure that you have
    ```sh
    https://www.microsoft.com/en-us/sql-server/sql-server-downloads
    ```
+4. Install SQL Server Management Studio (SSMS)
+   ```sh
+   https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16
+   ```
    
 Once you have the prerequisites ready, you can proceed to the next section to set up and configure the Videogame Rental Store API.
 
@@ -150,10 +154,19 @@ _For this project to work properly you will need to have installed Visual Studio
    ```sh
    dotnet ef database update
    ```
-7. Run the project, a browser window with the API will appear
-   ```sh
-   dotnet watch run
-   ```
+
+### Database population
+
+_In order to have some data you can test the API with, you'll need to run a few scripts from your SQL Server Management Studio._
+
+1. Run the SSMS program you previously installed
+2. Connect to the default server <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/e589af30-5c84-4d83-8e99-90d27b0f35c4)
+3. Open the 3 SQL files you'll find in the SQLScripts folder of the project <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/9138b7c7-be07-4689-835a-4c17bf810fb8)
+4. Execute them in order, 01...02...03... <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/eb56d73d-d1a1-47d9-9f97-755b47f29339)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -162,9 +175,27 @@ _For this project to work properly you will need to have installed Visual Studio
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+To get started with the usage of the project, follow the steps outlined below:
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+1. Now you can run the project. Execute the following command in your terminal to start the project.
+   ```sh
+   dotnet watch run
+   ```
+2. You will see the following screen <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/96f261e0-c0c3-4ba5-9d19-f72e152565f9)
+3. In order to have access to the endpoints, you need to register <br>
+* Under Auth, clic in Register <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/05495f4f-9672-4703-950a-c7df37a6545d)
+* Now clic in "Try it out" <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/da28960c-adca-4b5c-8931-e329c8077056)
+* In the Request Body insert the username and password you want <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/a169aa32-aeb3-455d-92f7-b937db7f66b0)
+* Finally clic "Execute" <br>
+![image](https://github.com/vrmedina/d_Videogame_Store/assets/12649707/5c892847-6d95-4d6f-9113-d30a63c666ce)
+* Congrats, your user has been created! Now you can log in to the API.
+
+
+_For more examples, please refer to the [Documentation](https://swagger.io/)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
