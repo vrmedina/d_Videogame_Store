@@ -67,16 +67,18 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://google.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Welcome to the Videogame Rental Store API, a powerful management system designed specifically for videogame rental stores. This API is built using .NET 7.0, Entity Framework, and SQL Server 2022, offering a seamless and efficient solution for managing your rental operations.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+With the Videogame Rental Store API, you can effortlessly handle game inventory, customer information, rentals, returns, and more. It provides a comprehensive set of endpoints that enable easy integration with your existing systems or front-end applications.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+Key Features:
 
-Use the `BLANK_README.md` to get started.
+* Simplify inventory management with seamless tracking of game titles, availability, and stock levels.
+* Efficiently handle customer profiles, enabling easy access to rental history, preferences, and personal information.
+* Streamline rental operations with intuitive endpoints for checking out games, tracking due dates, and managing returns.
+* Leverage the power of Entity Framework and SQL Server 2022 for robust and scalable data storage.
+
+Get started with the Videogame Rental Store API today and elevate your rental business to new heights of efficiency and customer satisfaction.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -84,12 +86,19 @@ Use the `BLANK_README.md` to get started.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 * [![.NET][Dotnet7]][Dotnet7-url]
 * [![Swagger][Swagger]][Swagger-url]
 * [![MicrosoftSQLServer][MicrosoftSQLServer]][MicrosoftSQLServer-url]
 
+This Videogame Rental Store API is built using cutting-edge technologies to ensure a seamless and efficient management system. The key technologies used in this project include:
+
+* .NET 7: The API is developed using the latest version of .NET, providing a powerful and feature-rich framework for building robust applications.
+
+* Swagger: The API documentation is generated using Swagger, which offers a clean and interactive interface to explore and test the API endpoints.
+
+* Microsoft SQL Server 2022: The project utilizes the power of Microsoft SQL Server 2022 as the database management system, ensuring secure and reliable data storage for all rental store operations.
+
+With this powerful combination of technologies, the Videogame Rental Store API delivers a modern, scalable, and user-friendly solution for managing your videogame rental store efficiently.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -98,12 +107,11 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Welcome to the Videogame Rental Store API! This section will guide you through the initial steps to get the API up and running in your development environment. You will find instructions on how to set up the necessary prerequisites, install dependencies, and run the API locally.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Before getting started with the Videogame Rental Store API, ensure that you have the following prerequisites installed:
 
 1. Install .NET 7 SDK for your O.S.
    ```sh
@@ -117,6 +125,8 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    https://www.microsoft.com/en-us/sql-server/sql-server-downloads
    ```
+   
+Once you have the prerequisites ready, you can proceed to the next section to set up and configure the Videogame Rental Store API.
 
 ### Installation
 
